@@ -2,6 +2,8 @@ package com.example.caij.androidtest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -15,20 +17,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        GitHub gitHub = GitHub.Factory.create();
-        Service service = new Service(gitHub);
-        service.loadContributors("square", "retrofit", new Callback<List<Contributor>>() {
-            @Override
-            public void onResponse(Call<List<Contributor>> call, Response<List<Contributor>> response) {
-                for (Contributor contributor : response.body()) {
-                    System.out.println(contributor.login + " (" + contributor.contributions + ")");
-                }
-            }
+    }
 
-            @Override
-            public void onFailure(Call<List<Contributor>> call, Throwable t) {
-                System.out.println("error");
-            }
-        });
+    public void sayHello(View view) {
+        Toast.makeText(this, "sayHello", Toast.LENGTH_LONG).show();
     }
 }
